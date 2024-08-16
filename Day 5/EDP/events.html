@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <ul id="listContainer">
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+<script>
+    const list = document.getElementById("listContainer");
+    list.addEventListener("click", function(event){
+        if(event.target.nodeName === "LI"){
+            console.log(event.target.textContent);
+        }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+*{
+    font-family: sans-serif;
+}
+#wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+form{
+    margin-bottom: 10px;
+}

@@ -1,0 +1,1 @@
+add to the file log2.txt this content: hi theereee

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "position": "Software Engineer",
+    "department": "Engineering"
+  },
+  {
+    "id": 2,
+    "name": "Bob Smith",
+    "position": "Project Manager",
+    "department": "Management"
+  },
+  {
+    "id": 3,
+    "name": "Carol White",
+    "position": "Data Scientist",
+    "department": "Data Analytics"
+  },
+  {
+    "id": 4,
+    "name": "David Brown",
+    "position": "Product Designer",
+    "department": "Design"
+  },
+  {
+    "id": 5,
+    "name": "Eva Green",
+    "position": "HR Specialist",
+    "department": "Human Resources"
+  },
+  {
+    "id": 6,
+    "name": "Frank Black",
+    "position": "Sales Manager",
+    "department": "Sales"
+  },
+  {
+    "id": 7,
+    "name": "Grace Lee",
+    "position": "Marketing Coordinator",
+    "department": "Marketing"
+  },
+  {
+    "id": 8,
+    "name": "Henry Adams",
+    "position": "IT Support",
+    "department": "IT"
+  },
+  {
+    "id": 9,
+    "name": "Isabel King",
+    "position": "Business Analyst",
+    "department": "Business Development"
+  },
+  {
+    "id": 10,
+    "name": "Jack Miller",
+    "position": "Financial Analyst",
+    "department": "Finance"
+  }
+]
