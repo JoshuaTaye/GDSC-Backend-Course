@@ -2,7 +2,6 @@ const Post = require('../models/Post');
 
 exports.createPost = async (req, res) => {
     const { title, content } = req.body;
-
     try {
         const newPost = new Post({
             title,
@@ -20,6 +19,7 @@ exports.getPosts = async (req, res) => {
     try {
         const posts = await Post.find().populate('author', 'username').exec();
         res.json(posts);
+        console.log(posts)
     } catch (error) {
         res.status(500).json({ error: 'Failed to retrieve posts' });
     }
