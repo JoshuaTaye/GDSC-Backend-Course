@@ -17,9 +17,8 @@ exports.createPost = async (req, res) => {
 
 exports.getPosts = async (req, res) => {
     try {
-        const posts = await Post.find().populate('author', 'username').exec();
+        const posts = await Post.find();
         res.json(posts);
-        console.log(posts)
     } catch (error) {
         res.status(500).json({ error: 'Failed to retrieve posts' });
     }

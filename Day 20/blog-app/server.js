@@ -5,7 +5,7 @@ const postRoutes = require('./routes/posts');
 const cors=require("cors");
 const corsOptions ={
     origin:'*',
-    credentials:true,            //access-control-allow-credentials:true
+    credentials:true,
     optionSuccessStatus:200,
 }
 
@@ -17,6 +17,16 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 
-mongoose.connect("mongodb://localhost:27017/GDSC")
-    .then(() => app.listen(5000, () => console.log('Server running on port 5000')))
-    .catch(err => console.log(err));
+
+(async () => {
+    try{
+        await mongoose.connect("mongodb://localhost:27017/GDSC");
+        console.log("Connected to Mongodb")
+        await app.listen(5000, () =>{
+            console.log("Listening on port 5000")
+        })
+    } catch (e) {
+        console.log(e.message)
+    }
+})()
+
