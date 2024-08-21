@@ -25,9 +25,23 @@ const findPost = async(id) => {
             document.getElementById("post-content").innerText = "Blog post not found.";
         }
     }catch (e) {
-
+        console.log(e.message)
     }
 }
-
 findPost(postId)
 
+
+const toggleButton = document.getElementById('toggle-theme');
+const body = document.body;
+
+toggleButton.addEventListener('click', () => {
+    body.classList.toggle('light-mode');
+
+    if (body.classList.contains('light-mode')) {
+        toggleButton.textContent = 'Toggle Dark Mode';
+    } else {
+        toggleButton.textContent = 'Toggle Light Mode';
+    }
+});
+
+module.exports = getQueryParams;

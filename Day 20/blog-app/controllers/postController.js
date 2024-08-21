@@ -1,8 +1,6 @@
 import {Post} from "../models/post.js"
 export const createPost = async (req, res) => {
-    // const { title, author, tags, content } = req.body;
-    // console.log(req.body);
-    const post = req.body
+    const post = req.body;
     console.log(post)
     try {
         const newPost = Post.create(post);
@@ -42,5 +40,22 @@ export const deletePost = async (req, res) => {
         return res.status(204).send(post);
     } catch (e) {
         res.status(500).json({ error: `${e.message}` });
+    }
+}
+
+export const updatePost = async (req, res) => {
+    try{
+        console.log(req.body)
+        const id = req.params.id;
+        const post = await Post.findById(id);
+        if (!post) return res.status(404).send("Couldn't retrieve post");
+        Object.keys(req.body).forEach(key => {
+                post[key] = req.body[key];
+        });
+        await post.save();
+        res.status(201).json("Post updated successfully!");
+    }catch (e) {
+        console.log(e)
+        res.status(500).json({error: `${e.message}`})
     }
 }

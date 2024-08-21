@@ -17,7 +17,7 @@
     <button id="toggle-theme">Toggle Light Mode</button>
   </div>
   <div class="container mx-auto">
-    <form onsubmit="submit()" method="POST">
+    <form id="blog-form" >
       <div class="my-2 flex flex-col">
         <label for="title" class="pr-3">Title</label>
         <input type="text" name="title" id="title" placeholder="Enter new title here.."
@@ -35,15 +35,15 @@
       </div>
       <div class="my-2 flex flex-col max-w-[300px]">
         <label for="blog-content">Content </label>
-        <textarea required id="blog-content" placeholder="Enter new Content here.."
-                  class="rounded-lg p-2 shadow-md"></textarea>
+        <textarea id="blog-content" placeholder="Enter new Content here.."
+                  class="rounded-lg p-2 shadow-md" name="content"></textarea>
       </div>
       <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded" type="submit">Submit
       </button>
     </form>
   </div>
 </div>
-<script src="script.js"></script>
+<script src="editBlog.js"></script>
 
 </body>
 </html>

@@ -15,12 +15,13 @@ h1 {
 
 .tagContainer{
     display: flex;
-    justify-content: space-around;
+    justify-content: start;
     row-gap: 10px;
     flex-wrap: wrap;
 }
 
 .tagNode{
+    padding-right: 10px;
     text-align: start;
     color: #2980b9 !important;
 }
@@ -41,7 +42,6 @@ h1 {
 #content > * {
     min-width: 250px;
     margin: 10px;
-    width: 25%;
 }
 
 .blog-post {

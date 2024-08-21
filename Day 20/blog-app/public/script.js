@@ -9,7 +9,7 @@
             postElement.className = "blog-post"
             postElement.innerHTML =
                 `<h2 class="text-3xl font-bold"><a href=blogDetails.html?id=${post._id}>${post.title}</a></h2>
-                 <p>${post.content}</p>
+                 <p class="line-clamp-4">${post.content}</p>
                   <div class="text-sm text-gray-400">
                   <div>Author: ${post.author}</div> 
                   <div>Date: ${new Date(post.createdAt).toLocaleDateString()}</div>
@@ -23,10 +23,10 @@
                 tagContainer.appendChild(tagNode)
                 tagNode.innerText = `${tag}`
                 tagNode.className = "tagNode"
-            })
+            });
             content.appendChild(postElement);
             const buttons = document.createElement('div')
-            buttons.innerHTML = `<div class="flex flex-wrap gap-x-3 justify-around">
+            buttons.innerHTML = `<div class="flex flex-wrap gap-x-3 justify-start">
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-5 rounded"
                         onClick=deleteBlog(\`${post._id}\`)>Delete Blog
                 </button>
