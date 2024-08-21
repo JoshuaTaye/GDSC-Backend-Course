@@ -13,7 +13,6 @@ const app = express();
 
 app.use(cors(corsOptions))
 app.use(express.json());
-
 app.use('/api/auth', authRoutes);
 app.use('/api/posts', postRoutes);
 

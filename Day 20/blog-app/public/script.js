@@ -7,7 +7,10 @@
         data.forEach(post => {
             const postElement = document.createElement('div')
             postElement.className = "blog-post"
-            postElement.innerHTML = `<h2>${post.title}</h2><p>${post.content}</p><span>Author: ${post.author} | Date: ${post.date}</span><button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-5 rounded" onclick="deleteBlog(${post.id})">Delete Blog</button>`;
+            postElement.innerHTML = `
+<h2 class="text-3xl font-bold">${post.title}</h2>
+<p>${post.content}</p>
+<span>Author: ${post.author} | Date: ${post.date}</span>`;
             const tagContainer = document.createElement('div')
             tagContainer.className = "tagContainer"
             postElement.appendChild(tagContainer)
@@ -18,6 +21,15 @@
                 tagNode.className = "tagNode"
             })
             content.appendChild(postElement);
+            const buttons = document.createElement('div')
+            buttons.innerHTML = `<div class="flex flex-wrap gap-x-3 justify-around">
+                <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-5 rounded"
+                        onClick="deleteBlog(${post.id})">Delete Blog
+                </button>
+                <a href='edit.html'
+                   class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded">Edit Blog</a>
+            </div>`
+            postElement.append(buttons)
         });
     } catch (e) {
         console.log(e.message)

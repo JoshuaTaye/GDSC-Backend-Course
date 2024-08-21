@@ -16,6 +16,8 @@ h1 {
 .tagContainer{
     display: flex;
     justify-content: space-around;
+    row-gap: 10px;
+    flex-wrap: wrap;
 }
 
 .tagNode{
@@ -74,9 +76,9 @@ h1 {
 #wrapper {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    margin: 30px 0;
+    margin: 30px 20px;
     gap: 10px;
 }
 #toggle-theme {
