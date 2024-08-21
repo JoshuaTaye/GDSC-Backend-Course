@@ -1,6 +1,5 @@
-const Post = require('../models/Post');
-
-exports.createPost = async (req, res) => {
+import {Post} from "../models/post.js"
+export const createPost = async (req, res) => {
     const { title, content } = req.body;
     try {
         const newPost = new Post({
@@ -15,7 +14,7 @@ exports.createPost = async (req, res) => {
     }
 };
 
-exports.getPosts = async (req, res) => {
+export const getPosts = async (req, res) => {
     try {
         const posts = await Post.find();
         res.json(posts);
@@ -23,3 +22,13 @@ exports.getPosts = async (req, res) => {
         res.status(500).json({ error: 'Failed to retrieve posts' });
     }
 };
+
+export const deletePost = async (req, res) => {
+    try{
+        const id = req.params.id;
+        let post = await Post.findByIdAndDelete(id);
+        if (!post) return res.status(404).send("Couldn't retrieve post")
+    } catch (e) {
+        res.status(500).json({ error: `${e.message}` });
+    }
+}
