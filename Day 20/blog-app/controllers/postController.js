@@ -1,15 +1,15 @@
 import {Post} from "../models/post.js"
 export const createPost = async (req, res) => {
-    const { title, content } = req.body;
+    // const { title, author, tags, content } = req.body;
+    // console.log(req.body);
+    const post = req.body
+    console.log(post)
     try {
-        const newPost = new Post({
-            title,
-            content,
-            author: req.user.userId
-        });
-        await newPost.save();
+        const newPost = Post.create(post);
+        if (newPost)
         res.status(201).json({ message: 'Post created successfully!' });
     } catch (error) {
+        console.log(error.message);
         res.status(500).json({ error: 'Post creation failed' });
     }
 };
@@ -23,11 +23,23 @@ export const getPosts = async (req, res) => {
     }
 };
 
+export const getPost = async (req, res) => {
+    try{
+        const id = req.params.id
+        const post = await Post.findById(id);
+        if (!post) return res.status(404).send("Blog Post Doesn't exist.")
+        res.json(post);
+    } catch (e) {
+        res.status(500).json({ error: 'Failed to retrieve posts' });
+    }
+}
+
 export const deletePost = async (req, res) => {
     try{
         const id = req.params.id;
         let post = await Post.findByIdAndDelete(id);
-        if (!post) return res.status(404).send("Couldn't retrieve post")
+        if (!post) return res.status(404).send("Couldn't retrieve post");
+        return res.status(204).send(post);
     } catch (e) {
         res.status(500).json({ error: `${e.message}` });
     }

@@ -7,10 +7,14 @@
         data.forEach(post => {
             const postElement = document.createElement('div')
             postElement.className = "blog-post"
-            postElement.innerHTML = `
-<h2 class="text-3xl font-bold">${post.title}</h2>
-<p>${post.content}</p>
-<span>Author: ${post.author} | Date: ${post.date}</span>`;
+            postElement.innerHTML =
+                `<h2 class="text-3xl font-bold"><a href=blogDetails.html?id=${post._id}>${post.title}</a></h2>
+                 <p>${post.content}</p>
+                  <div class="text-sm text-gray-400">
+                  <div>Author: ${post.author}</div> 
+                  <div>Date: ${new Date(post.createdAt).toLocaleDateString()}</div>
+                  </div>
+                  `;
             const tagContainer = document.createElement('div')
             tagContainer.className = "tagContainer"
             postElement.appendChild(tagContainer)
@@ -24,12 +28,12 @@
             const buttons = document.createElement('div')
             buttons.innerHTML = `<div class="flex flex-wrap gap-x-3 justify-around">
                 <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 my-5 rounded"
-                        onClick="deleteBlog(${post.id})">Delete Blog
+                        onClick=deleteBlog(\`${post._id}\`)>Delete Blog
                 </button>
-                <a href='edit.html'
+                <a href=edit.html?id=${post._id}
                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-5 rounded">Edit Blog</a>
             </div>`
-            postElement.append(buttons)
+            postElement.append(buttons);
         });
     } catch (e) {
         console.log(e.message)
@@ -37,6 +41,7 @@
 })();
 
 const deleteBlog = async (id) => {
+    console.log(id)
     const answer = prompt(`You are about to delete this blog? Y or N (blog ${id})`);
     if (answer === "N" || answer === "n") {
     } else {
@@ -44,13 +49,16 @@ const deleteBlog = async (id) => {
             const response = await fetch(`http://localhost:5000/api/posts/${id}`, {
                 method: "DELETE"
             });
-            if (response.ok) {
-                return "Yes"
+            if (response.status === 204) {
+               alert("Blog Post Deleted Successfully");
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
             } else {
-                console.log(response.status)
+                alert(response)
             }
         } catch (e) {
-            console.log(e.message)
+            alert(e.message)
         }
     }
 }
